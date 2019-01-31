@@ -6,6 +6,7 @@ services:
 env:
   - DOCKER_TAG=19.9-stretch
 
-before_script:
+script:
   - docker build -t webforgelabs/dlib:${DOCKER_TAG} .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push webforgelabs/dlib:${DOCKER_TAG}
